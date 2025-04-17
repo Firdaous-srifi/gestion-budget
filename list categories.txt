@@ -2,3 +2,15 @@ $categories = [
   'revenu' => ['Salaire', 'Bourse', 'Ventes', 'Autres'],
   'depense' => ['Logement', 'Transport', 'Alimentation', 'Santé', 'Divertissement', 'Éducation', 'Autres']
 ];
+
+
+page dyal transaction = 
+Ajouter une transaction :
+Une transaction est définie par :
+type (dépense ou revenu), montant, catégorie, description, date de transaction
+Supprimer une transaction
+Modifier une transaction
+Afficher l'historique des transactions triées par date, avec un filtre sur les années et les mois
+
+
+
