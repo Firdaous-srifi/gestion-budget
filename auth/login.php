@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../config.php';
+require_once "../functions/user.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($email) && !empty($password)) {
         try {
             // Check if the user exists
-            $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Password is correct, start a session
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['nom'];
-                header('Location: dashboard.php'); // Redirect to a dashboard page
+                header('Location: ../dashboard/dashboard.php'); // Redirect to a dashboard page
                 exit;
             } else {
                 $error = "Email ou mot de passe incorrect.";
